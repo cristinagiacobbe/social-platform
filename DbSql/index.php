@@ -32,7 +32,7 @@ $result = $connection->query($sql);
     <title>Db table</title>
 </head>
 
-<body>
+<body class="bg-danger">
     <div class="container">
         <h1 class="my-5">📽️ Ecco la lista degli utenti con più media caricati: 🖼️</h1>
 
