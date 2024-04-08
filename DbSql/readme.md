@@ -28,9 +28,10 @@ WHERE `likes`.`post_id` IS NULL;
 ## n.3
 Conta il numero di like per ogni post (165)
 
-SELECT COUNT(`likes`.`date`) AS `liks_numbers`, `likes`.`post_id`
-FROM `likes`
-GROUP BY `likes`.`post_id`;
+SELECT COUNT(`likes`.`post_id`) AS `like_number`, `posts`.`id`
+FROM `posts`
+LEFT JOIN `likes` ON `posts`.`id` = `likes`.`post_id` 
+GROUP BY `posts`.`id`;
 
 ## n.4
 Ordina gli utenti per il numero di media caricati (25) 
