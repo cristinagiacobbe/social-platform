@@ -1,4 +1,5 @@
 <?php
+//instance from class Post (handmade)
 
 $posts = [
     new post(

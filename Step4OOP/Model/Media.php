@@ -4,8 +4,8 @@ class Media
 {
     /**
      * Class of medias (parent class)
-     * @param
-     * @param
+     * @param string type of media (photo or video)
+     * @param string path (route of image/video)
      */
     public function __construct(public string $type, public string $path)
     {

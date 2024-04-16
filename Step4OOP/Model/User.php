@@ -1,7 +1,12 @@
 <?php
 class User
 {
-    public function __construct(public $username, public $web_site)
+    /**
+     * class of users (of posts)
+     * @param string username
+     * @param string web_site
+     */
+    public function __construct(public string $username, public string $web_site)
     {
         $this->username = $username;
         $this->web_site = $web_site;
