@@ -15,7 +15,10 @@ BONUS: espandete il diagramma per integrare anche l’entità Tags e Commenti.
 ## n.1
 Seleziona gli utenti che hanno postato almeno un video
 
-SELECT `users`.`username`, `medias`.`path` FROM `users` JOIN `medias` ON `users`.`id` = `medias`.`user_id`;
+SELECT COUNT(*) `user_id`, `users`.`username` 
+FROM `medias` JOIN `users` ON `medias`.`user_id` = `users`.`id` 
+WHERE `type`= "video" 
+GROUP BY `user_id`;
 
 ## n.2
 Seleziona tutti i post senza Like (13)
