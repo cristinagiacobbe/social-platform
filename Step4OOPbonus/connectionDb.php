@@ -28,6 +28,9 @@ $results = $connection->query($sql);
 //Save all records of every field (username, title and date into variables _list)
 while ($row = $results->fetch_assoc()) {
     /* ($user_list .= $row['username']); */
+
+$post= new Post($row['username']) //rivedere questo !!!!!!!!!!!!!!
+
     ($user_list[] = $row['username']);
     ($title_list[] = $row['title']);
     ($date_list[] = $row['date']);

@@ -62,3 +62,7 @@ $result = $connection->query($sql);
 </body>
 
 </html>
+
+<?php
+$connection->close();
+?>
