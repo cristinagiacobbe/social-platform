@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/Post.php'
+require_once __DIR__ . '/Post.php';
 
 ?>
 
@@ -28,22 +28,22 @@ require_once __DIR__ . '/Post.php'
 
             <div class="row row-cols-1 row-cols-sm-3 g-3">
 
-                <?php for ($i = 0; $i < $results->num_rows; $i++) : ?>
+                <?php foreach ($posts as $post) : ?>
                     <div class="col">
                         <div class="card">
                             <div class="card-title">
-                                <h3><?= $post->user[$i] ?></h3>
+                                <h3><?= $post->user ?></h3>
                             </div>
                             <div class="card-body">
-                                <h4><?= $post->title[$i] ?></h4>
-                                <img src="<?= $post->media[$i] ?>" alt="image">
+                                <h4><?= $post->title ?></h4>
+                                <img src=" <?= $post->media ?>" alt="">
                             </div>
                             <div class="card-footer">
-                                <h4><?= $post->formatDate($date[$i]) ?></h4>
+                                <h4><?= $post->formatDate($date) ?></h4>
                             </div>
                         </div>
                     </div>
-                <?php endfor; ?>
+                <?php endforeach; ?>
 
             </div>
 

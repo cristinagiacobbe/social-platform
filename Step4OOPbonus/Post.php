@@ -7,10 +7,9 @@ class Post
      * Class of posts (partly derived by query sql and partly handmade)
      * @param user is the array derived from result sql
      * @param title is the array derived from result sql
-     * @param date is the array derived from result sql
-     * @param media is a new array hand made
+     * @param date is the array derived from result sql     
      */
-    public function __construct(public array $user, public array $title, public array $date, public array $media)
+    public function __construct(public string $user, public string $title, public string $date, public string $media)
     {
         $this->user = $user;
         $this->title = $title;
@@ -24,7 +23,7 @@ class Post
         return date_format($string_date, "d/m/Y");
     }
 }
-$media_list = [
+/* $media_list = [
     "https://picsum.photos/id/18/400/200",
     "https://picsum.photos/id/225/400/200",
     "https://picsum.photos/id/240/400/200",
@@ -35,8 +34,15 @@ $media_list = [
     "https://picsum.photos/id/526/400/200",
     "https://picsum.photos/id/367/400/200"
 ];
+$random_media = round(0, count($media_list));
+class Post
+{
+    public function __construct(public $post_db, public array $media)
+    {
+        $this->post_db = $post_db;
+        $this->media = $media;
+    }
+};
 
-//Make a new instance using variable _list that I created from query sql
-
-$post = new Post($user_list, $title_list, $date_list, $media_list);
-/* $post->user = $user_list; */
+$posts = new Post($post_db, $media_list);
+/* var_dump($posts); */
