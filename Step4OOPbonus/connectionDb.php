@@ -14,6 +14,17 @@ if ($connection && $connection->connect_error) {
 //Make a query to extract the most liked posts, with post-title, author and date of creation
 //I limit the search to the first 9 results
 
+
+$sql = "SELECT COUNT(`likes`.`post_id`) AS `like_number`, `posts`.`title`, `users`.`username`, `posts`.`date`
+FROM `users`
+JOIN `posts`ON `users`.`id` = `posts`.`user_id`
+LEFT JOIN `likes` ON `posts`.`id` = `likes`.`post_id` 
+GROUP BY `posts`.`id`
+ORDER BY `like_number` DESC
+LIMIT 9;";
+
+$results = $connection->query($sql);
+
 $media_list = [
     "https://picsum.photos/id/18/400/200",
     "https://picsum.photos/id/225/400/200",
@@ -26,23 +37,11 @@ $media_list = [
     "https://picsum.photos/id/367/400/200"
 ];
 
-$sql = "SELECT COUNT(`likes`.`post_id`) AS `like_number`, `posts`.`title`, `users`.`username`, `posts`.`date`
-FROM `users`
-JOIN `posts`ON `users`.`id` = `posts`.`user_id`
-LEFT JOIN `likes` ON `posts`.`id` = `likes`.`post_id` 
-GROUP BY `posts`.`id`
-ORDER BY `like_number` DESC
-LIMIT 9;";
-
-
-$results = $connection->query($sql);
-
 /* $post_db = []; */
-//Save all records of every field (username, title and date into variables _list)
+
 while ($row = $results->fetch_assoc()) {
     $random_media = rand(0, count($media_list));
 
     $posts[] = new Post($row['username'], $row['title'], $row['date'], $media_list[$random_media]);
-    /*     $post_db[] = new Post_db($row['username'], $row['title'], $row['date']); */
 };
-var_dump($posts);
+/* var_dump($posts); */
