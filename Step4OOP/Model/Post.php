@@ -5,12 +5,12 @@ class Post
     /**
      * Class of posts (parent class)
      */
-    public function __construct(public string $title, public $date, public array $tags, public User $user, public Media $media)
+    public function __construct(public string $title, public $date, public array $tags, public Membership $membership, public Media $media)
     {
         $this->title = $title;
         $this->date = $date;
         $this->tags = $tags;
-        $this->user = $user;
+        $this->membership = $membership;
         $this->media = $media;
     }
 

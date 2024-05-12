@@ -3,6 +3,7 @@
 require_once __DIR__ . '/Model/Media.php';
 require_once __DIR__ . '/Model/Post.php';
 require_once __DIR__ . '/Model/User.php';
+require_once __DIR__ . '/Model/ExtendedClasses.php';
 require_once __DIR__ . '/db.php';
 
 
@@ -40,13 +41,14 @@ require_once __DIR__ . '/db.php';
                                 <h3><?= $post->title ?></h3>
                                 <p><?= $post->formatDate() ?></p>
                                 <?php
-                                $user = $post->user
+                                $membership = $post->membership
                                 ?>
-                                <p><?= $user->username ?></p>
+                                <h3 class="text-success"><?= $membership->username ?></h3>
+                                <p><?= $membership->loyalty() ?></p>
                                 <?php
                                 $media = $post->media
                                 ?>
-                                <p><?= $media->typeMedia() ?></p>
+                                <!--   <p><?= $media->typeMedia() ?></p> -->
                                 <?php if ($media->type === "photo") : ?>
                                     <img class="card-img-top rounded mx-auto d-block" src=" <?= $media->path ?>" alt="">
                                 <?php else : ?>
